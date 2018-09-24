@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: istio-demo-deployment
+  labels:
+    app: istio-demo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: istio-demo
+  template:
+    metadata:
+      labels:
+        app: istio-demo
+    spec:
+      containers:
+      - name: istio-demo
+        image: gcr.io/lakshithah13/istio-demo:v7
+        ports:
+        - containerPort: 8080
